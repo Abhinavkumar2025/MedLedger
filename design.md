@@ -2,7 +2,7 @@
 
 ## 1. System Architecture
 
-The MediLedger system follows a microservices-based architecture to ensure scalability, maintainability, and separation of concerns.
+The MedLedger system follows a microservices-based architecture to ensure scalability, maintainability, and separation of concerns.
 
 ```mermaid
 flowchart TD
