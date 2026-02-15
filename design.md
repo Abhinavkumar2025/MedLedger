@@ -5,24 +5,23 @@
 The MediLedger system follows a microservices-based architecture to ensure scalability, maintainability, and separation of concerns.
 
 ```mermaid
-graph TD
-    User["User / Browser"] -->|HTTPS| Frontend["Frontend (React + Vite)"]
-    Frontend -->|REST API| Backend["Backend API (Node.js + Express)"]
+flowchart TD
 
-    subgraph "Data Layer"
-        Backend -->|Read/Write| DB[(MongoDB)]
-        Backend -->|Store Files| Storage["Local/Cloud Storage"]
-    end
+    U[User or Browser] -->|HTTPS| F[Frontend - React Vite]
+    F -->|REST API| B[Backend API - Node Express]
 
-    subgraph "Services"
-        Backend -->|HTTP POST| OCR["OCR Service (Python + FastAPI)"]
-        OCR -->|External API| Groq["Groq LLM API"]
-        Backend -->|JSON-RPC| Blockchain["Blockchain Service (Ethereum/Sepolia)"]
-    end
+    %% Data Layer
+    B -->|Read Write| DB[(MongoDB)]
+    B -->|Store Files| FS[File Storage]
 
-    subgraph "Blockchain Layer"
-        Blockchain -->|Smart Contract| Ethereum[(Ethereum Network)]
-    end
+    %% Services
+    B -->|HTTP POST| O[OCR Service - FastAPI]
+    O -->|External API| G[Groq LLM API]
+    B -->|JSON RPC| BC[Blockchain Service]
+
+    %% Blockchain
+    BC -->|Smart Contract| ETH[(Ethereum Sepolia)]
+
 ```
 
 ### Components
